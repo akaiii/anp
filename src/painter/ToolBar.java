@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 
 public class ToolBar extends JPanel{
     
+    JButton open_btn;
     JButton draw_btn;
     JButton free_draw_btn;
     JButton stop_btn;
@@ -21,6 +22,7 @@ public class ToolBar extends JPanel{
         setBackground(Color.red);
         
         //new many many buttons  and set mouseClick event
+        open_btn = new JButton("Open");
         draw_btn = new JButton("Line");
         free_draw_btn = new JButton("FreeDraw");
         stop_btn = new JButton("Stop");
@@ -35,7 +37,8 @@ public class ToolBar extends JPanel{
                         {
                             parent.status = Status.draw_line;    
                             ToolBar.this.stop_btn.setEnabled(true); 
-                            ToolBar.this.draw_btn.setEnabled(false);     
+                            ToolBar.this.draw_btn.setEnabled(false);
+                            ToolBar.this.free_draw_btn.setEnabled(true);
                         }
                     }           
              );
@@ -78,14 +81,12 @@ public class ToolBar extends JPanel{
                     }           
              );
         
+        add(open_btn);
         add(draw_btn);
         add(free_draw_btn);
         add(stop_btn);
         add(exit_btn);
         stop_btn.setEnabled(false);
-        /*draw_btn.setEnabled(true);
-        free_draw_btn.setEnabled(true);
-        
-        exit_btn.setEnabled(true);*/        
+               
     }
 }
