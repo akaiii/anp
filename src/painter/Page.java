@@ -86,7 +86,10 @@ public class Page extends JPanel{
                         
               }
          );       
+        
     }   
+    
+    
     public void paintComponent(Graphics pen)
     {
         super.paintComponent(pen);          
