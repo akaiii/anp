@@ -4,19 +4,21 @@ package painter;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 //painter mode
 enum Status {draw_line,stop,free_draw,idle}
 
 public class Painter extends JFrame{
     
+    ArrayList<Line> lines = null;  //  <>  >> any_type
     public Status status = Status.idle;
     Dimension size ;
     ToolBar toolbar;
     Page page;
     
      
-     // <editor-fold defaultstate="collapsed" desc="Painter Code"> 
+    // <editor-fold defaultstate="collapsed" desc="Painter Code"> 
     Painter()
     {
       
@@ -42,7 +44,7 @@ public class Painter extends JFrame{
         this.setVisible(true);
     } // </editor-fold>
     
-     //<editor-fold defaultstate="collapsed" desc="OpenFile">
+    //<editor-fold defaultstate="collapsed" desc="OpenFile">
      public  void openFileAction() {
         FileDialog fd = new FileDialog(this, "Open", FileDialog.LOAD);
         fd.setVisible(true);
@@ -58,12 +60,8 @@ public class Painter extends JFrame{
             e.printStackTrace();
         }
     }//</editor-fold>
-    
-     public void saveFileAction(){
      
-     }
-     
-     //<editor-fold defaultstate="collapsed" desc="Main"> 
+    //<editor-fold defaultstate="collapsed" desc="Main"> 
      public static void main(String arg[]){
          new Painter();
      }//</editor-fold>
