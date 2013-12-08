@@ -5,16 +5,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class ToolBar extends JPanel{
     
-    JButton open_btn;
+    
+    //JButton open_btn;
     JButton draw_btn;
     JButton free_draw_btn;
     JButton stop_btn;
     JButton exit_btn;
     Painter parent ;
+    FileDialog dialog;
+    //OpenFile open = new OpenFile(); 
     
     ToolBar(Painter p)
     {
@@ -23,14 +28,21 @@ public class ToolBar extends JPanel{
         setBackground(Color.red);
         
         //new many many buttons  and set mouseClick event
-        open_btn = new JButton("Open");
+        JButton open_btn = new JButton("Open");
         draw_btn = new JButton("Line");
         free_draw_btn = new JButton("FreeDraw");
         stop_btn = new JButton("Stop");
         exit_btn = new JButton("Exit");
         
-         
+        //open the file
+        open_btn.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {                   
+                    parent.openFileAction();
             
+         }});
+        
+        
             draw_btn.addMouseListener (    
                     new MouseAdapter ()    
                     {
