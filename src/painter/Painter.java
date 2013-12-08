@@ -4,12 +4,14 @@ package painter;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 //painter mode
 enum Status {draw_line,stop,free_draw,idle}
 
 public class Painter extends JFrame{
     
+    ArrayList<Line> lines = null;  //  <>  >> any_type
     public Status status = Status.idle;
     Dimension size ;
     ToolBar toolbar;

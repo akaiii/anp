@@ -1,15 +1,15 @@
 
 package painter;
 
-import java.awt.*;
+import java.awt.Point;
 
-public class Line {
+    public class Line {
     Point start;
     Point end;
-    Line(Point s,Point e)
-    {
-        start = s;
-        end = e;
-    }
+        Line(Point s,Point e)
+        {
+            start = s;
+            end = e;
+        }
     
-}
+    }
