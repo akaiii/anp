@@ -78,15 +78,16 @@ public class ToolBar extends JPanel{
                         @Override
                         public void mouseClicked(MouseEvent e)     
                         {
-                            parent.status = Status.draw_line;    
+                            parent.status = Status.drawLining;    
                             ToolBar.this.stop_btn.setEnabled(true); 
                             ToolBar.this.draw_btn.setEnabled(false);
                             ToolBar.this.free_draw_btn.setEnabled(true);
                             //----------new
+                            /*
                             if(parent.page.status == Status.idle){
                                 parent.page.status = Status.readytoDrawLine;
                             }
-                            
+                            */
                         }
                     }           
              );
@@ -112,16 +113,17 @@ public class ToolBar extends JPanel{
                         public void mouseClicked(MouseEvent e)     
                         {                            
                             //status = Status.idle;    
-                            parent.page.lp  =  new Point(-1,-1);
+                            parent.p1  =  new Point(-1,-1);
                             ToolBar.this.stop_btn.setEnabled(false);    
                             ToolBar.this.draw_btn.setEnabled(true);   
                             ToolBar.this.free_draw_btn.setEnabled(true);
-                            
+                            parent.status = Status.idle;
                             
                             //-----new
+                            /*
                             if(parent.page.status == Status.drawLining)
                                 parent.page.status = Status.stop;
-                            
+                         */   
                         }
                     }           
              );

@@ -9,11 +9,6 @@ import java.io.*;
 //import java.applet.*;
 import java.util.*;
 //import java.awt.geom.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.Rectangle2D;
 
 //painter mode
 enum Status {draw_line,stop,free_draw,idle,readytoDrawLine,drawLining,readytoCreatingOBj,creatingOBJ,clean}
@@ -34,7 +29,8 @@ public class Painter extends JFrame{
     ObjectOutputStream oOut = null;
     Button open ; 
     Point p1,p2;
-    int n ;
+    Menu menuBar;
+    
     
     // <editor-fold defaultstate="collapsed" desc="Painter Code"> 
     Painter()
@@ -47,6 +43,7 @@ public class Painter extends JFrame{
         p1 = new Point(-1,-1);
        paintInfo = new Vector();
         
+        
         //frame size and set frame close 
         size = new Dimension(600,600);   
         this.setSize(size);    
@@ -55,14 +52,20 @@ public class Painter extends JFrame{
         this.setLocationRelativeTo(null);
         
         
-        toolbar = new ToolBar(this);                   
-        this.getContentPane().add(toolbar, BorderLayout.NORTH);
+        //toolbar = new ToolBar(this);                   
+        //this.getContentPane().add(toolbar, BorderLayout.NORTH);
+        
+        
+        
+        menuBar = new Menu(this);
+        this.getContentPane().add(menuBar,BorderLayout.NORTH);
         
         page = new Page(this);
         this.getContentPane().add(page,BorderLayout.CENTER);
         
         //let we see the ANP yooo                        
         this.setVisible(true);
+        //pack();
     } // </editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="OpenPicture">
@@ -125,9 +128,11 @@ public class Painter extends JFrame{
       System.out.println("can not write object");
     }
     }
-}
+
     
     //<editor-fold defaultstate="collapsed" desc="Main">
-
+    public static void  main(String arg[]){
+        new Painter();
+    }
     //</editor-fold>
-
+}

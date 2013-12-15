@@ -11,7 +11,7 @@ public class Page extends JPanel{
 
     Point lp;
     
-    ArrayList<Line> lines = null;  //  <>  >> any_type
+    //ArrayList<Line> lines = null;  //  <>  >> any_type
     
     Painter parent;
     
@@ -26,14 +26,14 @@ public class Page extends JPanel{
         l = new java.awt.Rectangle(-1,-1,-1,-1);
         
        status = Status.idle;  
-        lines =  new  ArrayList<Line>();        
+        //lines =  new  ArrayList<Line>();        
         lp = new Point(-1,-1);
         
         
         
         
         
-        this.setBackground(Color.yellow);   
+        //this.setBackground(Color.yellow);   
         this.setLayout(null);             
         
         
