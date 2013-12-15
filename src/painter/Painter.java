@@ -1,4 +1,3 @@
-
 package painter;
 
 
@@ -67,8 +66,33 @@ public class Painter extends JFrame{
     } // </editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="OpenPicture">
-     public void openFileAction() {
+
+    /*
+
+     public  void openFileAction() {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setVisible(true);
         
+        if(chooser.showOpenDialog(null)==JFileChooser.APPROVE_OPTION){
+        String path = chooser.getSelectedFile().getPath();
+        //String newPath = path.replace("\\\\", "\\\\\\");
+        Image image = null;
+        try{
+            File file = new File(path);
+            image = ImageIO.read(file);
+            //JFrame frame = new JFrame();
+            JLabel label = new JLabel(new ImageIcon(image));
+            //JButton btn = new JButton(new ImageIcon(image));
+            this.page.getContentPane().add(label,BorderLayout.CENTER);
+            //frame.setSize(500, 500);
+            this.page.pack();
+            //frame.setVisible(true);
+            
+        }
+        catch(Exception e){e.printStackTrace();}}
+        */
+
+         public void openFileAction() {
          dialog.setVisible(true);
          if(dialog.getFile() != null){
              repaint();

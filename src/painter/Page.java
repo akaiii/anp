@@ -48,10 +48,10 @@ public class Page extends JPanel{
                     g.setColor(Color.RED);                  
                     parent.p2 = new Point(e.getPoint());                
                     g.drawLine(parent.p1.x,parent.p1.y,parent.p2.x,parent.p2.y);
-                    lines.add(new Line(lp,e.getPoint()));
+                    
                     parent.p1 = e.getPoint();
                     parent.paintInfo.addElement(parent.p1);
-                    repaint();
+                   
                 }
                 //---new 
                /* if(Page.this.status == status.creatingOBJ){
@@ -69,7 +69,6 @@ public class Page extends JPanel{
                     
                     g.setColor(Color.YELLOW);
                    // g.drawRect(l.x,l.y, l.width, l.height);
-                    //要做四個象限去做判斷  目前以下是第四象限
                     if(lp.x > e.getX())
                         g.drawRect(lp.x, lp.y, e.getX()-lp.x, e.getY()-lp.y);
                 
@@ -89,6 +88,7 @@ public class Page extends JPanel{
                             */
                                if(parent.status == Status.free_draw)
                                 {
+                                   // parent.p1 = new Point(-1,-1);
                                     //do nothing
                                 }
                         }
@@ -97,7 +97,7 @@ public class Page extends JPanel{
                         
                             if(parent.status == Status.free_draw)
                             {
-                                lp = e.getPoint();
+                                parent.p1 = e.getPoint();
                             }
                             
                             //---new
@@ -111,27 +111,28 @@ public class Page extends JPanel{
                         public void mouseClicked(MouseEvent e)      
                         {
                             //------new
-                            if(Page.this.status == Status.readytoDrawLine)
+                            if(parent.status == Status.readytoDrawLine)
                             {
-                                lp = e.getPoint(); //抓滑鼠現在的位置check currentMouse
+                                parent.p1 = e.getPoint(); //check currentMouse
                                 Page.this.status = Status.drawLining;
                             
                             }
-                            else if(Page.this.status == Status.drawLining){
+                            else if(parent.status == Status.drawLining){
+                                    if(parent.p1.x == -1)
+                                        parent.p1 = e.getPoint();
                                     java.awt.Graphics g = Page.this.getGraphics();      
                                     g.setPaintMode();                      
-                                    g.setColor(Color.RED);                 
-                                    
-                                    g.drawLine(lp.x,lp.y,e.getX(),e.getY());
-                              
-                                    lines.add(new Line(lp,e.getPoint()));
+                                    g.setColor(Color.RED);    
+                                    parent.p2 = new Point(e.getPoint());
+                                    g.drawLine(parent.p1.x,parent.p1.y,parent.p2.x,parent.p2.y);
+                                    parent.paintInfo.addElement(parent.p1);
+                                    parent.p1 = new Point(e.getPoint());
                                    
                                 }
                                 
                                     
                             
                             }
-                            
                             
                             //------old
                             /*
@@ -168,37 +169,14 @@ public class Page extends JPanel{
         pen.setPaintMode();                
         pen.setColor(Color.red);       
       //  pen.drawLine(0, 0, 200, 200);      
-    /*
-     Line temp;
-     for(int i = 0; i<lines.size();i++)
-      {
-           temp = lines.get(i);
-           pen.drawLine(temp.start.x,temp.start.y,temp.end.x,temp.end.y);
-      }
-       //pen.drawLine();
       
-      */
-      //pen.drawImage(parent.image, 100, 100, parent.page);
-       Graphics2D g2d = (Graphics2D)pen;
+        Point p1,p2;    
 
-        Point p1,p2;
-
-        parent.n = parent.paintInfo.size();
-  
-  
-
-    for(int i=0; i<parent.n-1; i++)
+    for(int i=0; i<parent.paintInfo.size()-1; i++)
     {
          p1 = (Point)parent.paintInfo.elementAt(i);
          p2 = (Point)parent.paintInfo.elementAt(i+1);
-   //size = new BasicStroke(p1.boarder,BasicStroke.CAP_BUTT,BasicStroke.JOIN_BEVEL);
-         pen.drawLine(p1.x, p1.y, p2.x, p2.y);
-      //Line2D line1 = new Line2D.Double(p1.x, p1.y, p2.x, p2.y);
-      //g2d.draw(line1); 
-   //g2d.setColor(p1.col);
-   //g2d.setStroke(size);
-     
-    
+         pen.drawLine(p1.x, p1.y, p2.x, p2.y);  
     }
     //java.util tool
     //Vector >> linklist
